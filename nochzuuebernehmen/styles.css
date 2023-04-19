@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap");
+
+/* Allgemeine Stile */
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  text-indent: 0;
+  list-style: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-family: "Syne", sans-serif;
+  font-size: 1.05em;
+  color: #334;
+}
+
+/* Farbpalette */
+:root {
+  --color1: #50e8dd;
+  --color2: #90e0f3;
+  --color3: #b8b3e9;
+  --color4: #d999b9;
+  --color5: #d17b88;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: var(--color4)
+    radial-gradient(var(--color5) 50%, var(--color4) 200%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  perspective: 1000px;
+  user-select: none;
+}
+
+/* index animation */
+
+div.animation {
+  transform: translateZ(-400px) rotateX(60deg) rotateY(0deg) rotateZ(-45deg);
+  box-shadow: -4px 8px 8px rgba(8, 0, 32, 0.06125),
+    -2px 2px 4px rgba(8, 0, 32, 0.125);
+  transition: all 0.75s;
+}
+
+div.animation:hover {
+  box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.125),
+    0px 2px 5px rgba(0, 0, 0, 0.02);
+  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+}
+
+h1 {
+  font-family: "Syne", georgia, times, sans-serif;
+  font-size: 4em;
+  font-weight: bold;
+  color: var(--color2);
+  text-shadow: 0px 1px 0px var(--color1);
+  cursor: default;
+}
+
+a {
+  padding: 0.25em 0.5em;
+  border-radius: 0.25em;
+  color: var(--color2);
+  background-color: rgba(255, 255, 255, 0);
+  transition: all 0.25s ease-out;
+}
+
+a:hover {
+  color: var(--color5);
+  background-color: var(--color2);
+}
+
+li {
+  display: inline;
+
+  font-size: 0.75em;
+}
+
+li:not(:first-child):before {
+  content: "| ";
+  color: var(--color1);
+}
+
+.card {
+  position: relative;
+  width: 22.5em;
+  padding: 2.5em 2em;
+  background-color: var(--color5);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.05);
+}
+
+/* "Logo" Animation */
+.logo-sts {
+  font-size: 4em;
+  font-weight: bold;
+  color: var(--color2);
+  text-shadow: 0px 1px 0px var(--color1);
+  opacity: 0;
+  animation: fadeIn 1s forwards, slideIn 1s forwards;
+
+  h1.logo-sts {
+    animation: fadeIn 1s forwards, slideIn 1s forwards;
+  }
+}
+
+/* Inhalt Animation */
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* content*/
+
+.container {
+  display: grid;
+  grid-template-columns: 0.4fr 1.3fr;
+  grid-template-rows: 1.2fr;
+  grid-auto-columns: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "content-menu content";
+  height: 80vh;
+}
+
+.content-menu {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2fr 1fr 2fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "."
+    "content-menu-mid"
+    ".";
+  grid-area: content-menu;
+}
+
+/* menu */
+
+.content-menu-mid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "content-menu-about"
+    "content-menu-vita"
+    "content-menu-socials"
+    "content-menu-contact";
+  grid-area: content-menu-mid;
+}
+
+.content-menu-about {
+  grid-area: content-menu-about;
+}
+
+.content-menu-vita {
+  grid-area: content-menu-vita;
+}
+
+.content-menu-socials {
+  grid-area: content-menu-socials;
+}
+
+.content-menu-contact {
+  grid-area: content-menu-contact;
+}
+
+:where(
+    .content-menu-about:hover,
+    .content-menu-vita:hover,
+    .content-menu-socials:hover,
+    .content-menu-contact:hover
+  ):hover {
+  background: var(--color2);
+  transition: background-color 0.5s ease-in-out;
+}
+
+/* content */
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "content-header"
+    "content-content";
+  grid-area: content;
+  transition: grid-template-rows 0.25s ease-in-out;
+}
+
+.content-header {
+  grid-area: content-header;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-content {
+  grid-area: content-content;
+  transition: background-color 0.5s ease-in-out;
+}
